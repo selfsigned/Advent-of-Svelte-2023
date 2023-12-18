@@ -1,3 +1,7 @@
+import { base } from '$app/paths';
+
+export const prerender = true;
+
 export const load = async () => {
 	// Get available days and their paths
 	const modules_days = import.meta.glob('./day/d*/+page.svelte');
@@ -6,7 +10,7 @@ export const load = async () => {
 		const day = item.match(/\d+/g)[0];
 		if (day) {
 			const path = item.replace('+page.svelte', '').replace('.', '');
-			days[day] = path;
+			days[day] = base + path;
 		}
 	});
 
