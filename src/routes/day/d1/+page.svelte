@@ -16,40 +16,38 @@
 	<title>Naughty or Nice</title>
 </svelte:head>
 
-<div class="flex max-h-screen flex-row">
-	<div class="relative flex min-h-screen min-w-max flex-grow flex-col">
-		<div class="m-5 self-center">
-			<h1 class="text-5xl">Naughty or Nice</h1>
-		</div>
-		<input
-			class="input-bordered input-lg max-w-xs self-center"
-			placeholder="Check if they've been naughty"
-			type="text"
-			bind:value={nameSearch}
-		/>
-		<div class="m-10 grow self-center overflow-x-auto">
-			<div class="table">
-				<thead>
+<div class="flex h-[90svh] flex-grow flex-col">
+	<div class="m-5 self-center">
+		<h1 class="text-5xl">Naughty or Nice</h1>
+	</div>
+	<input
+		class="input-bordered input-lg max-w-xs self-center"
+		placeholder="Check if they've been naughty"
+		type="text"
+		bind:value={nameSearch}
+	/>
+	<div class="m-10 grow self-center overflow-x-auto">
+		<div class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Tally</th>
+					<th>Nice</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each tally as kid}
 					<tr>
-						<th>Name</th>
-						<th>Tally</th>
-						<th>Nice</th>
+						<th>{kid.name}</th>
+						<th>{kid.tally}</th>
+						{#if kid.tally > 0}
+							<th class="badge badge-success">Nice</th>
+						{:else}
+							<th class="badge badge-error">Naughty</th>
+						{/if}
 					</tr>
-				</thead>
-				<tbody>
-					{#each tally as kid}
-						<tr>
-							<th>{kid.name}</th>
-							<th>{kid.tally}</th>
-							{#if kid.tally > 0}
-								<th class="badge badge-success">Nice</th>
-							{:else}
-								<th class="badge badge-error">Naughty</th>
-							{/if}
-						</tr>
-					{/each}
-				</tbody>
-			</div>
+				{/each}
+			</tbody>
 		</div>
 	</div>
 </div>

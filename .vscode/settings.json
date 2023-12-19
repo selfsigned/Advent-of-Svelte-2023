@@ -6,18 +6,14 @@
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"[typescript]": {
+	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"prettier.documentSelectors": ["**/*.svelte", "**/*.html", "**/*.js"],
-	"eslint.validate": ["javascript", "typescript", "svelte"],
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"editor.quickSuggestions": {
-		"strings": true
-	}
 }

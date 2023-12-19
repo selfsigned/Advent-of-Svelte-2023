@@ -15,6 +15,6 @@ export const load = async () => {
 	});
 
 	return {
-		days: days
+		available_days: days
 	};
 };
