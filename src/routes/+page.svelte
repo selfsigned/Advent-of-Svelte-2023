@@ -11,7 +11,9 @@
 <div class="hero flex-1">
 	<div class="hero-content text-center">
 		<div class="max-w-md">
-			<h1 class="text-bold bg-gradient-to-r from-primary bg-clip-text text-5xl text-transparent">
+			<h1
+				class="text-bold bg-gradient-to-r from-primary via-secondary to-primary-content bg-clip-text text-5xl text-transparent"
+			>
 				Advent of Svelte 2023
 			</h1>
 			<p class="py-6">My solutions to Advent of Svelte 2023</p>
