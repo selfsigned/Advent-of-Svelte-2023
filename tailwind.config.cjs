@@ -6,7 +6,11 @@ const config = {
 		extend: {}
 	},
 
-	plugins: [require('daisyui')]
+	plugins: [require('daisyui')],
+	daisyui: {
+		themes: ['nord', 'winter', 'forest', 'cyberpunk'],
+		darkTheme: 'forest'
+	}
 };
 
 module.exports = config;
