@@ -15,5 +15,5 @@
 	"prettier.documentSelectors": ["**/*.svelte", "**/*.html", "**/*.js"],
 	"files.associations": {
 		"*.css": "tailwindcss"
-	},
+	}
 }

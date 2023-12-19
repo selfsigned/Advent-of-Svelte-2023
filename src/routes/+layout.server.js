@@ -10,7 +10,7 @@ export const load = async () => {
 		const day = item.match(/\d+/g)[0];
 		if (day) {
 			const path = item.replace('+page.svelte', '').replace('.', '');
-			days[day] = base + path;
+			days[day] = `${base}${path}`;
 		}
 	});
 

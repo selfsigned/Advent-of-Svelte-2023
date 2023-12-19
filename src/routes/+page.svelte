@@ -16,7 +16,7 @@
 			>
 				Advent of Svelte 2023
 			</h1>
-			<p class="py-6">My solutions to Advent of Svelte 2023</p>
+			<p class="py-6">My solutions for Advent of Svelte 2023</p>
 			<div class="flex flex-wrap items-center justify-center gap-4">
 				{#each range(1, 24) as dayNbr}
 					{#if dayNbr in data.available_days}
