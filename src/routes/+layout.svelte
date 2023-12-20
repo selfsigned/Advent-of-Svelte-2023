@@ -2,32 +2,30 @@
 	import '../app.css';
 	import { range } from '$lib/js/range.js';
 	import { base } from '$app/paths';
-	import Navbar from '../lib/navbar.svelte';
+	import Navbar from '$lib/navbar.svelte';
+	import Drawer from '$lib/drawer.svelte';
 
 	export let data;
 
+	const drawerID = 'navbar-drawer';
 	const repoURL = 'https://github.com/selfsigned/Advent-of-Svelte-2023';
 	const challengeURL = 'https://advent.sveltesociety.dev';
 
-	let prefix = 'Days ';
+	let prefix = 'Day ';
 	let routes = data.available_days;
 </script>
 
-<div class="drawer">
-	<input id="menu-drawer" type="checkbox" class="drawer-toggle" />
-	<!-- Content -->
-	<div class="drawer-content">
+<Drawer {drawerID}>
+	<svelte:fragment slot="body">
 		<div class="flex h-screen flex-col bg-base-300 bg-gradient-to-b from-base-300 to-base-100">
 			<div class="sticky z-10 w-full max-w-full">
-				<Navbar drawer="menu-drawer" {repoURL} {challengeURL}></Navbar>
+				<Navbar {drawerID} {repoURL} {challengeURL}></Navbar>
 			</div>
 			<slot />
 		</div>
-	</div>
-	<!-- Drawer -->
-	<div class="drawer-side z-20">
-		<label for="menu-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-		<!-- Sidebar content here -->
+	</svelte:fragment>
+
+	<svelte:fragment slot="sidebar">
 		<ul class="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
 			<!-- Fu*k this bug-->
 			{#if base != '.'}
@@ -53,5 +51,5 @@
 				</ul>
 			</li>
 		</ul>
-	</div>
-</div>
+	</svelte:fragment>
+</Drawer>

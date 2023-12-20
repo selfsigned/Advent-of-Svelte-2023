@@ -16,7 +16,7 @@
 	<title>Naughty or Nice</title>
 </svelte:head>
 
-<div class="flex h-[90svh] flex-grow flex-col">
+<div class="flex h-[90svh] flex-col">
 	<div class="m-5 self-center">
 		<h1 class="text-5xl">Naughty or Nice</h1>
 	</div>
