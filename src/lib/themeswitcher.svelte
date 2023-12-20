@@ -15,7 +15,7 @@
 </script>
 
 <div class="dropdown mr-2">
-	<div tabindex="0" role="button" class="btn btn-ghost">
+	<div tabindex="-1" role="button" class="btn btn-ghost">
 		Theme
 		<svg
 			width="12px"
