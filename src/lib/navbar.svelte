@@ -6,7 +6,7 @@
 	export let repoURL = '';
 	export let challengeURL = '';
 	export let themeswitcher = true;
-	export let drawer = false;
+	export let drawerID = false;
 
 	let theme_support = false;
 	onMount(async () => {
@@ -19,8 +19,8 @@
 <div class="bg-base-100 bg-opacity-90 shadow-sm backdrop-blur transition-shadow">
 	<nav class="navbar">
 		<div class="flex-1">
-			{#if typeof drawer === 'string' && drawer.length > 0}
-				<label for="menu-drawer" class="btn btn-ghost drawer-button">
+			{#if typeof drawerID === 'string' && drawerID.length > 0}
+				<label for={drawerID} class="btn btn-ghost drawer-button">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -35,7 +35,7 @@
 					>
 				</label>
 			{/if}
-			<a href={base + '/'} class="btn btn-ghost hidden w-auto text-lg sm:flex">
+			<a href={base + '/'} class="btn btn-ghost w-auto text-lg">
 				<img class="w-8" src={base + '/favicon.png'} alt="Advent of Svelte logo" />
 				<span class="hidden md:flex">Advent of Svelte</span>
 			</a>
@@ -45,7 +45,7 @@
 				target="_blank"
 				rel="noopener"
 				href={challengeURL}
-				class="btn btn-ghost hidden w-auto hover:rotate-180 sm:flex">WTF?</a
+				class="btn btn-ghost w-auto hover:rotate-180">WTF?</a
 			>
 			<a target="_blank" rel="noopener" href={repoURL} class="btn btn-ghost w-auto">
 				<svg class="w-7 fill-base-content" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg"
