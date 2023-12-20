@@ -45,7 +45,7 @@
 				target="_blank"
 				rel="noopener"
 				href={challengeURL}
-				class="btn btn-ghost hidden w-auto hover:rotate-90 sm:flex">WTF?</a
+				class="btn btn-ghost hidden w-auto hover:rotate-180 sm:flex">WTF?</a
 			>
 			<a target="_blank" rel="noopener" href={repoURL} class="btn btn-ghost w-auto">
 				<svg class="w-7 fill-base-content" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg"

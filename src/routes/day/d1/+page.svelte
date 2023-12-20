@@ -21,12 +21,12 @@
 		<h1 class="text-5xl">Naughty or Nice</h1>
 	</div>
 	<input
-		class="input-bordered input-lg max-w-xs self-center"
-		placeholder="Check if they've been naughty"
+		class="text-md input input-bordered input-md max-w-xs self-center"
+		placeholder="Type a name"
 		type="text"
 		bind:value={nameSearch}
 	/>
-	<div class="m-10 grow self-center overflow-x-auto">
+	<div class="mt-3 w-full self-center overflow-x-scroll sm:m-5 md:w-[600px]">
 		<div class="table">
 			<thead>
 				<tr>
