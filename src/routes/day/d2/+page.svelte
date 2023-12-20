@@ -13,7 +13,7 @@
 	const santaMoodDefault = { weight: 0, face: '🧑‍🎄', mood: 'Starving' };
 	const santaMoods = [
 		{ weight: 1337, face: '🤠', mood: 'Cookie magnate' },
-		{ weight: 100, face: '👨‍💼', mood: 'CEO of Cookie' },
+		{ weight: 100, face: '👨‍💼', mood: 'CEO of Cookies' },
 		{ weight: 42, face: '🧐', mood: 'Cookie expert' },
 		{ weight: 15, face: '🤤', mood: 'Well fed' },
 		{ weight: 2, face: '🎅', mood: 'Happy' },
@@ -85,4 +85,9 @@
 		tabindex="0"
 		>reset
 	</btn>
+	<class class="flex w-full flex-wrap overflow-auto p-4">
+		{#each Array(Math.abs(cookieCount)) as _}
+			<span in:fade out:fade class={cookieCount < 0 ? 'opacity-30' : 'opacity-100'}>🍪</span>
+		{/each}
+	</class>
 </DayBaseLayout>
