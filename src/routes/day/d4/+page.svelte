@@ -1,15 +1,17 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import DayBaseLayout from '$lib/daybaselayout.svelte';
 	import { onMount } from 'svelte';
 	import { invalidateAll } from '$app/navigation';
-	export let data;
+	let { data } = $props();
 
 	const title = 'Heart of Christmas';
 	const maxAvgHeartRate = 180;
-	let percentage,
-		avgHeartrate,
-		avgHeartrate30s,
-		avgHeartrate5min = 0;
+	let percentage = $derived((data.heartRate / maxAvgHeartRate) * 100),
+		avgHeartrate = $derived(percentageCalc(data.pastHeartRates, 0)),
+		avgHeartrate30s = $derived(percentageCalc(data.pastHeartRates, 30)),
+		avgHeartrate5min = $state(0);
 
 	function percentageCalc(array, nbrOfsamples) {
 		if (!nbrOfsamples) {
@@ -21,10 +23,12 @@
 		}
 	}
 
-	$: percentage = (data.heartRate / maxAvgHeartRate) * 100;
-	$: avgHeartrate = percentageCalc(data.pastHeartRates, 0);
-	$: avgHeartrate30s = percentageCalc(data.pastHeartRates, 30);
-	$: avgHeartrate5min = percentageCalc(data.pastHeartRates, 300);
+	
+	
+	
+	run(() => {
+		avgHeartrate5min = percentageCalc(data.pastHeartRates, 300);
+	});
 
 	onMount(() => {
 		// Poll API every second

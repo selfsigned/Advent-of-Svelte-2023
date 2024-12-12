@@ -1,7 +1,7 @@
 <script>
 	import { range } from '$lib/js/range.js';
 	import { base } from '$app/paths';
-	export let data;
+	let { data } = $props();
 </script>
 
 <svelte:head>

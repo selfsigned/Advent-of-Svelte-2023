@@ -2,19 +2,19 @@
 <!-- drawer slot == drawer content -->
 
 <script>
-	export let drawerID;
+	let { drawerID, body, sidebar } = $props();
 </script>
 
 <div class="drawer">
 	<input id={drawerID} type="checkbox" class="drawer-toggle" />
 	<!-- Content -->
 	<div class="drawer-content">
-		<slot name="body" />
+		{@render body?.()}
 	</div>
 	<!-- Drawer -->
 	<div class="drawer-side z-20">
 		<label for={drawerID} aria-label="close sidebar" class="drawer-overlay"></label>
 		<!-- Sidebar content here -->
-		<slot name="sidebar" />
+		{@render sidebar?.()}
 	</div>
 </div>

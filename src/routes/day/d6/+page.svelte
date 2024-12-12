@@ -3,8 +3,8 @@
 	import DayBaseLayout from '$lib/daybaselayout.svelte';
 	const title = 'Misteltoe Metronome';
 
-	let bpm = 0,
-		taps = [];
+	let bpm = $state(0),
+		taps = $state([]);
 
 	function reset() {
 		taps = [];
@@ -33,8 +33,8 @@
 	<div class="flex w-full flex-col place-items-center sm:flex-row sm:justify-center">
 		<btn
 			class="btn btn-primary h-48 w-52 text-2xl"
-			on:click={calculateBPM}
-			on:keypress={calculateBPM}
+			onclick={calculateBPM}
+			onkeypress={calculateBPM}
 			role="button"
 			tabindex="0">PRESS ME</btn
 		>
@@ -45,7 +45,7 @@
 			{/key}
 		</div>
 	</div>
-	<btn class="btn mt-2 shadow-md" on:click={reset} on:keypress={reset} role="button" tabindex="0"
+	<btn class="btn mt-2 shadow-md" onclick={reset} onkeypress={reset} role="button" tabindex="0"
 		>Reset</btn
 	>
 	<div class="mt-2 flex flex-row justify-center">

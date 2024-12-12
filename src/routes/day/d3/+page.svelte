@@ -1,16 +1,18 @@
 <script>
 	import DayBaseLayout from '$lib/daybaselayout.svelte';
-	export let data;
+	let { data } = $props();
 
 	const title = 'Jingle Bell Balancer';
 	const maxWeight = 100; // max weight of sleigh
 
 	// Presents logic
-	let availablePresents = data.presents;
-	let sleighPresents = new Map();
+	let availablePresents = $state(data.presents);
+	let sleighPresents = $state(new Map());
 	function movePresent(src, dst, id) {
+		console.log(src);
 		dst.set(id, src.get(id));
 		src.delete(id);
+		console.log('moved:', src);
 	}
 	function sleighDragDrop(event) {
 		let id = event.type == 'drop' ? event.dataTransfer.getData('text') : this.id;
@@ -18,9 +20,9 @@
 
 		if (data) {
 			movePresent(availablePresents, sleighPresents, id);
-			// trigger reactive refresh
-			sleighPresents = sleighPresents;
-			availablePresents = availablePresents;
+			// update page values
+			sleighPresents = new Map(sleighPresents);
+			availablePresents = new Map(availablePresents);
 		} else {
 			console.log(`'${id}' doesn't match any available present`);
 		}
@@ -29,14 +31,14 @@
 		let data = sleighPresents.get(id);
 		if (data) {
 			movePresent(sleighPresents, availablePresents, id);
-			// trigger reactive refresh
-			sleighPresents = sleighPresents;
-			availablePresents = availablePresents;
+			// update page values
+			sleighPresents = new Map(sleighPresents);
+			availablePresents = new Map(availablePresents);
 		}
 	}
 	// Weight calculation
-	let sleighWeight = 0;
-	let sleighPercentFull = 0;
+	let sleighWeight = $derived(getPresentsSum(sleighPresents));
+	let sleighPercentFull = $derived((sleighWeight / maxWeight) * 100);
 	function getPresentsSum(presents) {
 		let sum = 0;
 		presents.forEach((present) => {
@@ -44,8 +46,6 @@
 		});
 		return sum;
 	}
-	$: sleighWeight = getPresentsSum(sleighPresents);
-	$: sleighPercentFull = (sleighWeight / maxWeight) * 100;
 </script>
 
 <DayBaseLayout {title}>
@@ -68,17 +68,17 @@
 			<div class="mb-10 flex flex-wrap content-start">
 				{#each [...availablePresents] as [id, present]}
 					{@const overweight = sleighWeight + present.weight > maxWeight}
-					<!-- svelte-ignore a11y-unknown-role -->
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<!-- svelte-ignore a11y_unknown_role -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div
 						{id}
 						class="card m-1 h-28 w-40 bg-base-300 shadow-xl {overweight ? 'blur-[2px]' : ''}"
 						draggable="true"
-						on:dragstart={(e) => (
+						ondragstart={(e) => (
 							(e.dataTransfer.dropEffect = 'move'), e.dataTransfer.setData('text', id)
 						)}
-						on:click={sleighDragDrop}
-						on:keypress={sleighDragDrop}
+						onclick={sleighDragDrop}
+						onkeypress={sleighDragDrop}
 					>
 						<div class="card-body">
 							<h2 class="card-title">{present.name}</h2>
@@ -91,21 +91,20 @@
 
 		<div class="ml-2 h-[80svh]">
 			<h2 class="text-2xl">Sleigh</h2>
-			<!-- svelte-ignore a11y-no-onchange -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
 				class="mb-10 flex min-h-[50svh] flex-grow flex-wrap content-start border-2 border-base-content shadow-xl"
-				on:dragenter={(e) => e.preventDefault()}
-				on:dragover={(e) => e.preventDefault()}
-				on:drop={sleighDragDrop}
+				ondragenter={(e) => e.preventDefault()}
+				ondragover={(e) => e.preventDefault()}
+				ondrop={sleighDragDrop}
 			>
 				{#each [...sleighPresents] as [id, present]}
 					<div class="card m-1 h-28 w-36 bg-base-300">
 						<div class="card-body">
-							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<!-- svelte-ignore a11y_click_events_have_key_events -->
 							<btn
 								class="btn btn-ghost absolute -ml-10 -mt-10"
-								on:click={(e) => delPresentFromSleigh(id)}>🗑️</btn
+								onclick={(e) => delPresentFromSleigh(id)}>🗑️</btn
 							>
 							<h2 class="card-title">{present.name}</h2>
 							{present.weight}kg

@@ -3,12 +3,21 @@
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 
-	export let githubURL = '';
-	export let drawerID = '';
-	export let title = '';
-	export let themeswitcher = true;
+	interface Props {
+		githubURL?: string;
+		drawerID?: string;
+		title?: string;
+		themeswitcher?: boolean;
+	}
 
-	let theme_support = false;
+	let {
+		githubURL = '',
+		drawerID = '',
+		title = '',
+		themeswitcher = true
+	}: Props = $props();
+
+	let theme_support = $state(false);
 	onMount(async () => {
 		if (browser) {
 			theme_support = CSS.supports('selector(:has(*)');

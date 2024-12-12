@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
 	import { fade } from 'svelte/transition';
 	import DayBaseLayout from '$lib/daybaselayout.svelte';
 
 	const title = 'Merry Munch-o-Meter';
 
 	// Cookies
-	let cookieCount = 0;
+	let cookieCount = $state(0);
 	const addCookie = () => ++cookieCount;
 	const decCookie = () => --cookieCount;
 	const rstCookie = () => (cookieCount = 0);
@@ -24,19 +24,19 @@
 		{ weight: -5, face: '😢', mood: 'Sad' },
 		{ weight: -2, face: '😟', mood: 'In debt' }
 	];
-	function getClosestMood(cookies) {
+	function getClosestMood(cookies: number) {
 		for (const [key, value] of Object.entries(santaMoods)) {
-			if (cookies < '0' && value.weight < '0' && cookies <= value.weight) {
+			if (cookies < 0 && value.weight < 0 && cookies <= value.weight) {
 				return santaMoods[key];
-			} else if (cookies >= '0' && value.weight >= '0' && cookies >= value.weight) {
+			} else if (cookies >= 0 && value.weight >= 0 && cookies >= value.weight) {
 				return santaMoods[key];
 			}
 		}
 		return santaMoodDefault; // fallback
 	}
 
-	let santa = santaMoods[0];
-	$: santa = getClosestMood(cookieCount, santaMoods);
+	// let santa = $state(santaMoods[0]);
+	let santa = $derived(getClosestMood(cookieCount));
 </script>
 
 <svelte:head>
@@ -57,15 +57,15 @@
 			<div class="stat-actions">
 				<btn
 					class="btn btn-sm"
-					on:click={addCookie}
-					on:keypress={addCookie}
+					onclick={addCookie}
+					onkeypress={addCookie}
 					role="button"
 					tabindex="0">+</btn
 				>
 				<btn
 					class="btn btn-sm"
-					on:click={decCookie}
-					on:keypress={decCookie}
+					onclick={decCookie}
+					onkeypress={decCookie}
 					role="button"
 					tabindex="0">-</btn
 				>
@@ -79,8 +79,8 @@
 	</div>
 	<btn
 		class="btn btn-sm mt-4 {cookieCount == 0 ? 'btn-disabled' : ''}"
-		on:click={rstCookie}
-		on:keypress={rstCookie}
+		onclick={rstCookie}
+		onkeypress={rstCookie}
 		role="button"
 		tabindex="0"
 		>reset

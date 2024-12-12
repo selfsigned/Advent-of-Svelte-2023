@@ -17,9 +17,8 @@
 		});
 		return result;
 	}
-	let input = 'Hello World',
-		encodedInput;
-	$: encodedInput = convertToMorse(input);
+	let input = $state('Hello World'),
+		encodedInput = $derived(convertToMorse(input));
 
 	// Morse to audio
 	let audioCtx = null;
@@ -68,19 +67,20 @@
 	<div class="card w-[90%] bg-base-100 shadow-xl md:w-[70%] lg:w-[50%]">
 		<div class="card-body">
 			<h2 class="card-title">Morse Encoder</h2>
-			<textarea class="textarea textarea-bordered font-mono" type="text" bind:value={input} />
+			<textarea class="textarea textarea-bordered font-mono" type="text" bind:value={input}
+			></textarea>
 			<div class="flex flex-row gap-2">
 				<btn
 					class="btn grow"
-					on:click={playMorseAudio(audioCtx, encodedInput)}
-					on:keypress={playMorseAudio(audioCtx, encodedInput)}
+					onclick={() => playMorseAudio(audioCtx, encodedInput)}
+					onkeypress={() => playMorseAudio(audioCtx, encodedInput)}
 					role="button"
 					tabindex="0">Play</btn
 				>
 				<btn
 					class="btn w-[30%]"
-					on:click={stopAudio(oscillator)}
-					on:keypress={stopAudio(oscillator)}
+					onclick={() => stopAudio(oscillator)}
+					onkeypress={() => stopAudio(oscillator)}
 					role="button"
 					tabindex="0">Stop</btn
 				>

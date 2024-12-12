@@ -34,7 +34,7 @@
 				class="theme-controller btn btn-ghost btn-sm btn-block justify-start"
 				aria-label="Auto"
 				value={null}
-				on:change={themeSave}
+				onchange={themeSave}
 				checked={get(themeStore) === null}
 			/>
 			{#each availableThemes as theme}
@@ -45,7 +45,7 @@
 						class="theme-controller btn btn-ghost btn-sm btn-block justify-start"
 						aria-label={theme.name}
 						value={theme.value}
-						on:change={themeSave}
+						onchange={themeSave}
 						checked={get(themeStore) == theme.value}
 					/>
 				</li>

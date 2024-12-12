@@ -27,7 +27,7 @@
 		bind:value={nameSearch}
 	/>
 	<div class="mt-3 w-full self-center overflow-x-scroll sm:m-5 md:w-[600px]">
-		<div class="table">
+		<table class="table">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -48,6 +48,6 @@
 					</tr>
 				{/each}
 			</tbody>
-		</div>
+		</table>
 	</div>
 </div>
