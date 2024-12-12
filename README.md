@@ -2,9 +2,9 @@
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fselfsigned.dev%2FAdvent-of-Svelte-2023%2F)
 
-🔗 Live at [selfsigned.dev/Advent-of-Svelte-2023](https://selfsigned.dev/Advent-of-Svelte-2023/)
+🔗 Live at [advent-of-svelte.selfsigned.dev/Advent-of-Svelte-2023](https://advent-of-svelte.selfsigned.dev)
 
-🎄 My (late) entry for the [Advent of Svelte](https://advent.sveltesociety.dev) challenge, grab some craft beer and follow me on my frontend journey. Feedback welcome! 🍺
+🎄 My (late) entry for the [Advent of Svelte](https://advent.sveltesociety.dev/2023) challenge, grab some craft beer and follow me on my frontend journey. Feedback welcome! 🍺
 
 ### Stack
 

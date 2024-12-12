@@ -16,6 +16,11 @@
 			>
 				Advent of Svelte 2023
 			</h1>
+			<h2
+				class="text-bold bg-gradient-to-l from-primary via-secondary to-primary bg-clip-text text-xl text-transparent"
+			>
+				Continued in 2024!
+			</h2>
 			<p class="py-6">My solutions for Advent of Svelte 2023</p>
 			<div class="flex flex-wrap items-center justify-center gap-4">
 				{#each range(1, 24) as dayNbr}

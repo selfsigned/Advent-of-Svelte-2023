@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 	import ThemeSwitcher from './themeswitcher.svelte';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 
-	export let repoURL = '';
-	export let challengeURL = '';
+	export let githubURL = '';
+	export let drawerID = '';
+	export let title = '';
 	export let themeswitcher = true;
-	export let drawerID = false;
 
 	let theme_support = false;
 	onMount(async () => {
@@ -19,7 +19,7 @@
 <div class="bg-base-100 bg-opacity-90 shadow-sm backdrop-blur transition-shadow">
 	<nav class="navbar">
 		<div class="flex-1">
-			{#if typeof drawerID === 'string' && drawerID.length > 0}
+			{#if drawerID.length > 0}
 				<label for={drawerID} class="btn btn-ghost drawer-button">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -36,18 +36,12 @@
 				</label>
 			{/if}
 			<a href={base + '/'} class="btn btn-ghost w-auto text-lg">
-				<img class="w-8" src={base + '/favicon.png'} alt="Advent of Svelte logo" />
-				<span class="hidden md:flex">Advent of Svelte</span>
+				<img class="w-8" src={base + '/favicon.png'} alt="Website logo" />
+				<span class="hidden md:flex">{title}</span>
 			</a>
 		</div>
 		<div>
-			<a
-				target="_blank"
-				rel="noopener"
-				href={challengeURL}
-				class="btn btn-ghost w-auto hover:rotate-180">WTF?</a
-			>
-			<a target="_blank" rel="noopener" href={repoURL} class="btn btn-ghost w-auto">
+			<a target="_blank" rel="noopener" href={githubURL} class="btn btn-ghost w-auto">
 				<svg class="w-7 fill-base-content" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg"
 					><path
 						fill-rule="evenodd"
