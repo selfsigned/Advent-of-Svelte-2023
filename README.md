@@ -1,10 +1,12 @@
 # Advent Of Svelte 2023
 
-![Website](https://img.shields.io/website?url=https%3A%2F%2Fselfsigned.dev%2FAdvent-of-Svelte-2023%2F)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fadvent-of-svelte.selfsigned.dev)
 
 🔗 Live at [advent-of-svelte.selfsigned.dev/Advent-of-Svelte-2023](https://advent-of-svelte.selfsigned.dev)
 
 🎄 My (late) entry for the [Advent of Svelte](https://advent.sveltesociety.dev/2023) challenge, grab some craft beer and follow me on my frontend journey. Feedback welcome! 🍺
+
+🆕 Updated to svelte 5 🔥
 
 ### Stack
 
